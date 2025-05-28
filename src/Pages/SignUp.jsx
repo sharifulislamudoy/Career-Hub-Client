@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub, FaFacebookF } from "react-icons/fa";
 import { Eye, EyeOff } from 'lucide-react';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../Shared/AuthProvider';
+import { auth, githubProvider, googleProvider } from '../Shared/AuthProvider';
 import useScrollToTop from '../Shared/useScrollToTop';
 import { AuthContext } from '../Shared/AuthContext';
 
@@ -51,6 +51,16 @@ const Signup = () => {
                 console.error("Google Sign-In Error", error.message);
             });
     };
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                const user = result.user;
+                navigate('/jobs');
+            })
+            .catch((error) => {
+                console.error("Google Sign-In Error", error.message);
+            });
+    };
 
     return (
         <motion.div
@@ -71,7 +81,7 @@ const Signup = () => {
                             <Lottie animationData={signupAnimation} loop={true} />
                         </div>
                         <motion.h2
-                            className="text-2xl font-bold text-center text-primary"
+                            className="text-2xl font-bold text-center text-primary mb-4"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
@@ -185,7 +195,6 @@ const Signup = () => {
                                 <option value="">Select Account Type</option>
                                 <option value="job-seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
-                                <option value="recruiters">Recruiters</option>
                             </select>
                         </motion.div>
 
@@ -421,6 +430,7 @@ const Signup = () => {
 
                     {/* GitHub Button */}
                     <motion.button
+                        onClick={handleGithubSignIn}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.5 }}
@@ -430,19 +440,6 @@ const Signup = () => {
                     >
                         <FaGithub size={24} />
                         <span className="font-medium">Continue with GitHub</span>
-                    </motion.button>
-
-                    {/* Facebook Button */}
-                    <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.5 }}
-                        transition={{ duration: 0.1, ease: 'easeOut' }}
-                        whileHover={buttonHover}
-                        className="flex items-center justify-center space-x-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md py-2 transition"
-                    >
-                        <FaFacebookF size={24} />
-                        <span className="font-medium">Continue with Facebook</span>
                     </motion.button>
                 </div>
             </div>

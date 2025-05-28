@@ -32,10 +32,10 @@ const Navbar = ({ user, handleLogout }) => {
 
     const navLinks = (
         <>
-            <li><NavLink to="/" className="font-medium" onClick={() => setMobileMenuOpen(false)}>Home</NavLink></li>
-            <li><NavLink to="/jobs" className="font-medium" onClick={() => setMobileMenuOpen(false)}>Jobs</NavLink></li>
-            <li><NavLink to="/about" className="font-medium" onClick={() => setMobileMenuOpen(false)}>About</NavLink></li>
-            <li><NavLink to="/contact" className="font-medium" onClick={() => setMobileMenuOpen(false)}>Contact</NavLink></li>
+            <li><NavLink to="/" className="font-medium p-2" onClick={() => setMobileMenuOpen(false)}>Home</NavLink></li>
+            <li><NavLink to="/jobs" className="font-medium p-2" onClick={() => setMobileMenuOpen(false)}>Jobs</NavLink></li>
+            <li><NavLink to="/about" className="font-medium p-2" onClick={() => setMobileMenuOpen(false)}>About</NavLink></li>
+            <li><NavLink to="/add-jobs" className="font-medium p-2" onClick={() => setMobileMenuOpen(false)}>Add Jobs</NavLink></li>
         </>
     );
 
@@ -133,7 +133,6 @@ const Navbar = ({ user, handleLogout }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-
         </motion.div>
     );
 };

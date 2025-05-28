@@ -7,6 +7,7 @@ import Signup from "../Pages/SignUp";
 import LoginPage from "../Pages/Login";
 import ErrorPage from "../Pages/Error";
 import Jobs from "../Pages/Jobs";
+import AddJobPost from "../Pages/AddJobPost";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: '/jobs',
         Component: Jobs,
+      },
+      {
+        path: '/add-jobs',
+        Component: AddJobPost,
       },
       {
         path: '/sign-up',
